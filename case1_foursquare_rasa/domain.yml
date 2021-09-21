@@ -1,0 +1,119 @@
+---
+intents:
+- "get_api_v2_venues_suggestcompletion"
+- "parameters_list_v2_venues_suggestcompletion"
+- "get_api_v2_venues_{VENUE_ID}"
+- "parameters_list_v2_venues_{VENUE_ID}"
+- "get_api_suggeastVenues"
+- "parameters_list_suggeastVenues"
+- "inform"
+- "auto_get_location"
+slots:
+  ll:
+    type: "text"
+  VENUE_ID:
+    type: "text"
+  auto_latitude:
+    type: "text"
+  v:
+    type: "text"
+  query:
+    type: "text"
+  limit:
+    type: "text"
+  client_secret:
+    type: "text"
+  auto_longitude:
+    type: "text"
+  client_id:
+    type: "text"
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+entities:
+- "query"
+- "limit"
+- "client_id"
+- "client_secret"
+- "v"
+- "ll"
+- "VENUE_ID"
+- "auto_latitude"
+- "auto_longitude"
+responses:
+  utter_ask_query:
+  - text: "What do you want to query?"
+  utter_ask_v:
+  - text: "What is the version?"
+  utter_ask_limit:
+  - text: "How many limits do you want to set?"
+  utter_ask_VENUE_ID:
+  - text: "What is the VENUE_ID ?"
+  utter_please_rephrase:
+  - text: "I'm sorry, I didn't quite understand that. Could you rephrase?"
+version: "2.0"
+actions:
+- "action_slots_values"
+- "action_use_api"
+- "action_auto_location"
+- "action_set_default"
+- "action_set_intent"
+- "action_reset_slot"
+forms:
+  suggeastVenues_form:
+    required_slots:
+      ll:
+      - type: "from_entity"
+        entity: "ll"
+      VENUE_ID:
+      - type: "from_entity"
+        entity: "VENUE_ID"
+      v:
+      - type: "from_entity"
+        entity: "v"
+      query:
+      - type: "from_entity"
+        entity: "query"
+      limit:
+      - type: "from_entity"
+        entity: "limit"
+      client_secret:
+      - type: "from_entity"
+        entity: "client_secret"
+      client_id:
+      - type: "from_entity"
+        entity: "client_id"
+  v2_venues_suggestcompletion_form:
+    required_slots:
+      ll:
+      - type: "from_entity"
+        entity: "ll"
+      v:
+      - type: "from_entity"
+        entity: "v"
+      query:
+      - type: "from_entity"
+        entity: "query"
+      limit:
+      - type: "from_entity"
+        entity: "limit"
+      client_secret:
+      - type: "from_entity"
+        entity: "client_secret"
+      client_id:
+      - type: "from_entity"
+        entity: "client_id"
+  v2_venues_{VENUE_ID}_form:
+    required_slots:
+      VENUE_ID:
+      - type: "from_entity"
+        entity: "VENUE_ID"
+      v:
+      - type: "from_entity"
+        entity: "v"
+      client_secret:
+      - type: "from_entity"
+        entity: "client_secret"
+      client_id:
+      - type: "from_entity"
+        entity: "client_id"
