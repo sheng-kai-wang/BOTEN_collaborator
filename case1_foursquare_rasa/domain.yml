@@ -1,6 +1,6 @@
 ---
 intents:
-- "hello"
+- "get_api_v2_venues_suggestcompletion"
 - "parameters_list_v2_venues_suggestcompletion"
 - "get_api_v2_venues_{VENUE_ID}"
 - "parameters_list_v2_venues_{VENUE_ID}"
