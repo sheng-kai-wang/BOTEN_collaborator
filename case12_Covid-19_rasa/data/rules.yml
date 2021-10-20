@@ -1,0 +1,55 @@
+---
+rules:
+- rule: "Activate statistics_form"
+  steps:
+  - intent: "get_api_statistics"
+  - action: "action_set_intent"
+  - action: "action_set_default"
+  - action: "statistics_form"
+  - active_loop: "statistics_form"
+- rule: "Submit statistics_form"
+  condition:
+  - active_loop: "statistics_form"
+  steps:
+  - action: "statistics_form"
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: "action_slots_values"
+  - action: "action_use_api"
+  - action: "action_reset_slot"
+- rule: "See statistics parameters list"
+  steps:
+  - intent: "parameters_list_statistics"
+  - action: "action_slots_values"
+- rule: "Activate Covid-19_form"
+  steps:
+  - intent: "get_api_Covid-19"
+  - action: "action_set_intent"
+  - action: "action_set_default"
+  - action: "Covid-19_form"
+  - active_loop: "Covid-19_form"
+- rule: "Submit Covid-19_form"
+  condition:
+  - active_loop: "Covid-19_form"
+  steps:
+  - action: "Covid-19_form"
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: "action_slots_values"
+  - action: "action_use_api"
+  - action: "action_reset_slot"
+- rule: "See Covid-19 parameters list"
+  steps:
+  - intent: "parameters_list_Covid-19"
+  - action: "action_slots_values"
+- rule: "Set location"
+  steps:
+  - intent: "auto_get_location"
+  - action: "action_auto_location"
+- rule: "Ask the user to rephrase whenever they send a message with low NLU confidence"
+  steps:
+  - intent: "nlu_fallback"
+  - action: "utter_please_rephrase"
+version: "2.0"
